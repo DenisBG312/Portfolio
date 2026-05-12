@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(curl -s \"https://api.anthropic.com/v1/design/h/ti3dPR3yNdetZUm0ElDVGA\" --max-filesize 2000000 -o design_file.json)",
+      "Bash(curl -sL \"https://api.anthropic.com/v1/design/h/ti3dPR3yNdetZUm0ElDVGA\" -o \"C:\\\\Users\\\\denis42\\\\Desktop\\\\PORTFOLIO NEXT JS\\\\design_file.json\" --write-out \"%{http_code}\")"
+    ]
+  }
+}
