@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Reveal } from './Reveal'
 import { Section } from './Section'
+import { useLang } from './LangProvider'
 
 /* ============================================================
    SHARED UTILITIES
@@ -73,6 +74,7 @@ function ProductGlyph({ tone, idx }: { tone: string; idx: number }) {
 }
 
 function FashionShopCard() {
+  const { t } = useLang()
   const [cart, setCart] = useState<typeof FS_PRODUCTS>([])
   const [view, setView] = useState<'shop' | 'checkout' | 'done'>('shop')
   const [filter, setFilter] = useState<'all' | 'sale'>('all')
@@ -87,14 +89,13 @@ function FashionShopCard() {
           <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--muted)' }}>
             <span style={{ fontSize: 12 }}>project_01</span>
             <span style={{ width: 4, height: 4, background: 'var(--accent)', borderRadius: '50%' }} />
-            <span style={{ fontSize: 12 }}>shipped</span>
+            <span style={{ fontSize: 12 }}>{t('fs_status_shipped')}</span>
           </div>
           <h3 className="display" style={{ fontSize: 32, margin: '6px 0 8px' }}>
             FashionShop<span style={{ color: 'var(--accent)' }}>.</span>
           </h3>
           <p style={{ margin: 0, color: 'var(--ink-2)', maxWidth: 560 }}>
-            A clean fashion storefront built with <strong>ASP.NET Core MVC</strong>. Product browsing, detail pages,
-            cart, and a working Stripe checkout — modeled after the parts of an e-commerce flow I actually use.
+            {t('fs_desc')}
           </p>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 14 }}>
             {['ASP.NET Core MVC', 'C#', 'Entity Framework', 'MS SQL', 'Identity', 'Stripe', 'Razor', 'Bootstrap'].map((t) => (
@@ -220,24 +221,21 @@ function FashionShopCard() {
             </div>
           </div>
           <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginTop: 10, textAlign: 'center' }}>
-            ↑ a working demo of the flow — add items, check out, done.
+            {t('fs_demo_hint')}
           </div>
         </div>
 
         {/* Feature notes */}
         <aside className="proj-side" style={{ padding: 22, background: 'var(--paper)' }}>
-          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 10 }}>// what i built</div>
-          <FeatureLine n="01" title="Product catalog"  desc="EF Core models for products, variants, categories. Razor pages for browse + detail." />
-          <FeatureLine n="02" title="Identity & auth"  desc="ASP.NET Identity with role-based admin area for managing inventory." />
-          <FeatureLine n="03" title="Cart & sessions"  desc="Server-side cart tied to user — falls back to session for anonymous." />
-          <FeatureLine n="04" title="Stripe checkout"  desc="Live payment intents, webhook order confirmation, receipt emails." />
-          <FeatureLine n="05" title="Admin dashboard"  desc="CRUD for products, image uploads, order management." />
+          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 10 }}>{t('fs_built')}</div>
+          <FeatureLine n="01" title={t('fs_f1_title')} desc={t('fs_f1_desc')} />
+          <FeatureLine n="02" title={t('fs_f2_title')} desc={t('fs_f2_desc')} />
+          <FeatureLine n="03" title={t('fs_f3_title')} desc={t('fs_f3_desc')} />
+          <FeatureLine n="04" title={t('fs_f4_title')} desc={t('fs_f4_desc')} />
+          <FeatureLine n="05" title={t('fs_f5_title')} desc={t('fs_f5_desc')} />
 
-          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', margin: '18px 0 8px' }}>// what i learned</div>
-          <p style={{ fontSize: 13, color: 'var(--ink-2)', margin: 0, lineHeight: 1.6 }}>
-            Modeling a real domain — products with variants, inventory, orders — is more honest than building a todo
-            app twelve times. Stripe webhooks taught me to think about <em>eventual</em> consistency.
-          </p>
+          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', margin: '18px 0 8px' }}>{t('fs_learned')}</div>
+          <p style={{ fontSize: 13, color: 'var(--ink-2)', margin: 0, lineHeight: 1.6 }}>{t('fs_learned_p')}</p>
         </aside>
       </div>
     </article>
@@ -328,6 +326,7 @@ function ArchDiagram() {
 type FeedbackData = { score: number; strengths: string[]; improvements: string[] }
 
 function JoblyzeCard() {
+  const { t } = useLang()
   const [tab, setTab] = useState<'match' | 'resume' | 'cover'>('match')
   const [resume, setResume] = useState(
     'Junior C# / .NET developer, 1 yr experience. Built ASP.NET Core MVC e-commerce with Stripe; React + Supabase AI job tool. EF Core, SQL, identity. Based in Ruse, BG.'
@@ -369,14 +368,13 @@ function JoblyzeCard() {
           <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--muted)' }}>
             <span style={{ fontSize: 12 }}>project_02</span>
             <span style={{ width: 4, height: 4, background: 'var(--accent)', borderRadius: '50%' }} />
-            <span style={{ fontSize: 12 }}>in development</span>
+            <span style={{ fontSize: 12 }}>{t('jl_status_dev')}</span>
           </div>
           <h3 className="display" style={{ fontSize: 32, margin: '6px 0 8px' }}>
             Joblyze<span style={{ color: 'var(--accent)' }}>.</span>
           </h3>
           <p style={{ margin: 0, color: 'var(--ink-2)', maxWidth: 560 }}>
-            AI-powered job search &amp; career assistant. <strong>React + Supabase + Gemini.</strong> Resume scoring,
-            cover letter generation, interview prep, smart matching — the tools I wished I&apos;d had when I started.
+            {t('jl_desc')}
           </p>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 14 }}>
             {['React', 'Supabase', 'Gemini API', 'TypeScript', 'Tailwind', 'PostgreSQL', 'Auth', 'Edge Functions'].map((t) => (
@@ -411,9 +409,9 @@ function JoblyzeCard() {
             {/* Tabs */}
             <div style={{ display: 'flex', borderBottom: '1px solid var(--line)', background: 'var(--paper)' }}>
               {([
-                { id: 'match',  label: 'smart match',  n: '01' },
-                { id: 'resume', label: 'resume coach', n: '02' },
-                { id: 'cover',  label: 'cover letter', n: '03' },
+                { id: 'match',  label: t('jl_tab_match'),  n: '01' },
+                { id: 'resume', label: t('jl_tab_resume'), n: '02' },
+                { id: 'cover',  label: t('jl_tab_cover'),  n: '03' },
               ] as const).map((t) => (
                 <button
                   key={t.id}
@@ -437,7 +435,7 @@ function JoblyzeCard() {
               {tab === 'match' && (
                 <div style={{ display: 'grid', gap: 8 }}>
                   <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 2 }}>
-                    // 4 matches based on your profile
+                    {t('jl_match_comment')}
                   </div>
                   {JOB_MATCHES.map((j) => (
                     <div key={j.co} style={{ border: '1px solid var(--line)', borderRadius: 6, padding: 10, background: 'var(--bg-2)' }}>
@@ -460,7 +458,7 @@ function JoblyzeCard() {
               {tab === 'resume' && (
                 <div>
                   <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 8 }}>
-                    // paste your resume blurb · powered by ai
+                    {t('jl_resume_comment')}
                   </div>
                   <textarea
                     value={resume}
@@ -469,15 +467,15 @@ function JoblyzeCard() {
                     style={{ minHeight: 90, resize: 'vertical', fontSize: 12 }}
                   />
                   <button className="btn btn-accent" style={{ marginTop: 8 }} disabled={loading} onClick={analyze}>
-                    {loading ? <><Spinner />analyzing…</> : <>analyze with AI →</>}
+                    {loading ? <><Spinner />{t('jl_analyzing')}</> : <>{t('jl_analyze_btn')}</>}
                   </button>
                   {feedback && (
                     <div style={{ marginTop: 12, display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                       <ScoreDial score={feedback.score} />
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', marginBottom: 4 }}>strengths</div>
+                        <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', marginBottom: 4 }}>{t('jl_strengths')}</div>
                         {feedback.strengths.map((s, i) => <div key={i} style={{ fontSize: 12, marginBottom: 2 }}>✓ {s}</div>)}
-                        <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', margin: '10px 0 4px' }}>improvements</div>
+                        <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', margin: '10px 0 4px' }}>{t('jl_improvements')}</div>
                         {feedback.improvements.map((s, i) => <div key={i} style={{ fontSize: 12, marginBottom: 2 }}>→ {s}</div>)}
                       </div>
                     </div>
@@ -489,7 +487,7 @@ function JoblyzeCard() {
               {tab === 'cover' && (
                 <div>
                   <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 8 }}>
-                    // pick a match, generate an opener
+                    {t('jl_cover_comment')}
                   </div>
                   <select
                     value={coverFor.co}
@@ -502,7 +500,7 @@ function JoblyzeCard() {
                     ))}
                   </select>
                   <button className="btn btn-accent" style={{ marginTop: 8 }} disabled={coverLoading} onClick={writeCover}>
-                    {coverLoading ? <><Spinner />writing…</> : <>generate opener →</>}
+                    {coverLoading ? <><Spinner />{t('jl_generating')}</> : <>{t('jl_generate_btn')}</>}
                   </button>
                   {cover && (
                     <div style={{ marginTop: 12, padding: 12, background: 'var(--bg-2)', border: '1px solid var(--line)', borderRadius: 6, fontSize: 12.5, lineHeight: 1.6, fontStyle: 'italic', color: 'var(--ink-2)' }}>
@@ -514,19 +512,19 @@ function JoblyzeCard() {
             </div>
           </div>
           <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginTop: 10, textAlign: 'center' }}>
-            ↑ interactive demo — try the smart match, resume coach, and cover letter tabs
+            {t('jl_demo_hint')}
           </div>
         </div>
 
         {/* Architecture + features */}
         <aside className="proj-side" style={{ padding: 22, background: 'var(--paper)' }}>
-          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 10 }}>// the architecture</div>
+          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 10 }}>{t('jl_arch')}</div>
           <ArchDiagram />
-          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', margin: '18px 0 8px' }}>// what makes it interesting</div>
-          <FeatureLine n="01" title="Prompt design as UX"   desc="Each tool has a system prompt tuned to return structured, parseable JSON." />
-          <FeatureLine n="02" title="Supabase auth + RLS"   desc="Row-level security so users only see their own analyses & matches." />
-          <FeatureLine n="03" title="Edge functions"        desc="Gemini calls run server-side to keep the API key off the client." />
-          <FeatureLine n="04" title="Embeddings (wip)"      desc="Job matching prototype using vector similarity on job descriptions." />
+          <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', margin: '18px 0 8px' }}>{t('jl_interest')}</div>
+          <FeatureLine n="01" title={t('jl_f1_title')} desc={t('jl_f1_desc')} />
+          <FeatureLine n="02" title={t('jl_f2_title')} desc={t('jl_f2_desc')} />
+          <FeatureLine n="03" title={t('jl_f3_title')} desc={t('jl_f3_desc')} />
+          <FeatureLine n="04" title={t('jl_f4_title')} desc={t('jl_f4_desc')} />
         </aside>
       </div>
     </article>
@@ -538,12 +536,13 @@ function JoblyzeCard() {
 ============================================================ */
 
 export function Projects() {
+  const { t } = useLang()
   return (
     <Section
       id="projects"
-      label="// 02 — projects"
-      title="Things I've actually shipped."
-      kicker="Two side-projects I keep returning to. Click around — the demos below are live, not screenshots."
+      label={t('proj_label')}
+      title={t('proj_title')}
+      kicker={t('proj_kicker')}
     >
       <div style={{ display: 'grid', gap: 28 }}>
         <Reveal><FashionShopCard /></Reveal>
