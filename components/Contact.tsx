@@ -15,7 +15,7 @@ function ContactRow({
   onCopy?: () => void
 }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '90px 1fr auto', gap: 12, padding: '10px 0', borderBottom: '1px dashed var(--line)', alignItems: 'center' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: '90px minmax(0, 1fr) auto', gap: 12, padding: '10px 0', borderBottom: '1px dashed var(--line)', alignItems: 'center' }}>
       <span className="mono" style={{ fontSize: 12, color: 'var(--accent)' }}>{k}</span>
       {href ? (
         <a

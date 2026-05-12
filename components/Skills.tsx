@@ -79,7 +79,7 @@ export function Skills() {
       title="What's in the toolbox."
       kicker="Honest self-ratings. The bars are vibes; the projects are the proof."
     >
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 22 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 22 }}>
         {SKILLS.map((g, i) => (
           <Reveal key={g.group} delay={i * 80}>
             <div className="card" style={{ padding: 22 }}>
@@ -96,7 +96,7 @@ export function Skills() {
       </div>
 
       <Reveal>
-        <div className="card" style={{ marginTop: 22, padding: 22, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 18 }}>
+        <div className="card stats-grid" style={{ marginTop: 22, padding: 22, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 18 }}>
           <Stat n="2"   label="shipped projects" />
           <Stat n="1 yr" label="professional" />
           <Stat n="∞"   label="cups of coffee" />

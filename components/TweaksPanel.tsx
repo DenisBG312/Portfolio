@@ -23,7 +23,7 @@ export function TweaksPanel() {
 
   return (
     <div
-      className="mono"
+      className="mono tweaks-root"
       style={{
         position: 'fixed', bottom: 22, right: 22, zIndex: 100,
         display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8,

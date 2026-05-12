@@ -82,7 +82,7 @@ function FashionShopCard() {
 
   return (
     <article className="card" style={{ overflow: 'hidden' }}>
-      <header style={{ padding: '20px 26px', borderBottom: '1px solid var(--line)', display: 'flex', gap: 22, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+      <header style={{ padding: '18px 20px', borderBottom: '1px solid var(--line)', display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
         <div style={{ flex: '1 1 280px', minWidth: 0 }}>
           <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--muted)' }}>
             <span style={{ fontSize: 12 }}>project_01</span>
@@ -364,7 +364,7 @@ function JoblyzeCard() {
 
   return (
     <article className="card" style={{ overflow: 'hidden' }}>
-      <header style={{ padding: '20px 26px', borderBottom: '1px solid var(--line)', display: 'flex', gap: 22, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+      <header style={{ padding: '18px 20px', borderBottom: '1px solid var(--line)', display: 'flex', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
         <div style={{ flex: '1 1 280px', minWidth: 0 }}>
           <div className="mono" style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--muted)' }}>
             <span style={{ fontSize: 12 }}>project_02</span>

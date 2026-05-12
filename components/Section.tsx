@@ -14,7 +14,7 @@ interface SectionProps {
 export function Section({ id, label, title, kicker, children }: SectionProps) {
   return (
     <section id={id} style={{ position: 'relative', padding: '90px 28px 30px' }}>
-      <div style={{ maxWidth: 1180, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1180, margin: '0 auto', minWidth: 0, width: '100%' }}>
         <Reveal>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 24, marginBottom: 30, flexWrap: 'wrap' }}>
             <div>

@@ -68,7 +68,7 @@ export function Experience() {
         <div>
           {EXPERIENCE.map((e, i) => (
             <Reveal key={i} delay={i * 80}>
-              <div style={{ display: 'grid', gridTemplateColumns: '90px 24px 1fr', gap: 16, paddingBottom: 28 }}>
+              <div className="timeline-row" style={{ display: 'grid', gridTemplateColumns: '90px 24px 1fr', gap: 16, paddingBottom: 28 }}>
                 <div className="mono" style={{ fontSize: 11, color: 'var(--accent)', paddingTop: 4 }}>{e.year}</div>
                 <div style={{ position: 'relative' }}>
                   <span style={{

@@ -121,6 +121,8 @@ export function Hero({ onJump }: HeroProps) {
         style={{
           position: 'relative',
           maxWidth: 1180,
+          width: '100%',
+          minWidth: 0,
           margin: '0 auto',
           padding: '60px 28px 80px',
           display: 'grid',

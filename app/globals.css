@@ -64,6 +64,9 @@
 ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Prevent ANY element from causing page-level horizontal scroll */
+html { overflow-x: hidden; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -75,6 +78,15 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* Constrain every section so its content never bleeds past 100vw */
+section { max-width: 100vw; overflow-x: hidden; }
+
+/* Images never wider than their container */
+img { max-width: 100%; height: auto; }
+
+/* Grid children: default min-width to 0 so they actually shrink */
+.card { min-width: 0; }
 
 body {
   background-image:
@@ -239,7 +251,9 @@ hr.rule { border: none; border-top: 1px dashed var(--line-strong); margin: 0; }
   font-size: 12px;
 }
 .term-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-.term-body { padding: 18px 20px; min-height: 280px; }
+.term-body { padding: 18px 20px; min-height: 280px; overflow-x: auto; }
+/* Long boot lines wrap instead of blowing the terminal width */
+.term-body > div { word-break: break-all; white-space: pre-wrap; }
 .t-prompt { color: var(--accent); }
 .t-cmt { color: #7a6a52; }
 .t-ok  { color: #a8c272; }
@@ -339,19 +353,70 @@ hr.rule { border: none; border-top: 1px dashed var(--line-strong); margin: 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ============================================================
-   MOBILE
+   RESPONSIVE
 ============================================================ */
-@media (max-width: 720px) {
-  body { font-size: 14px; }
-}
+
+/* Tablet: collapse two-column grids */
 @media (max-width: 860px) {
-  .about-grid { grid-template-columns: 1fr !important; }
-  .exp-grid   { grid-template-columns: 1fr !important; }
+  .about-grid   { grid-template-columns: 1fr !important; }
+  .exp-grid     { grid-template-columns: 1fr !important; }
   .contact-grid { grid-template-columns: 1fr !important; }
-  .proj-grid  { grid-template-columns: 1fr !important; }
-  .proj-demo  { border-right: none !important; border-bottom: 1px solid var(--line); }
+  .proj-grid    { grid-template-columns: 1fr !important; }
+  .proj-demo    { border-right: none !important; border-bottom: 1px solid var(--line); }
 }
+
+/* Mobile: ≤ 640px */
 @media (max-width: 640px) {
-  .nav-links { display: none; }
-  .hero-grid { grid-template-columns: 1fr !important; }
+  body { font-size: 14px; }
+
+  /* Show hamburger, hide desktop links */
+  .hamburger  { display: flex !important; }
+  .nav-links  { display: none !important; }
+
+  /* Hero */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    padding: 40px 20px 56px !important;
+    gap: 32px !important;
+  }
+
+  /* Sections: tighter vertical padding (not the hero which manages its own) */
+  section[id]:not(#top) { padding: 60px 20px 20px !important; }
+
+  /* Terminal: shorter on mobile, prevent internal lines from blowing width */
+  .term-body  { max-height: 260px !important; }
+  .term-bar   { font-size: 11px; gap: 6px; }
+  .term-bar span:last-child { display: none; } /* hide "78×24" on mobile */
+
+  /* Chips: smaller */
+  .chip { font-size: 10px !important; padding: 3px 7px !important; }
+
+  /* Mini browser URL bar */
+  .url { font-size: 10px; }
+
+  /* Experience timeline: compress year column */
+  .timeline-row { grid-template-columns: 64px 18px 1fr !important; gap: 10px !important; }
+
+  /* Stats row: 2 columns on mobile */
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Footer padding */
+  footer { padding: 28px 20px !important; }
+
+  /* Tweaks panel: keep right but a little inset */
+  .tweaks-root { bottom: 16px !important; right: 16px !important; }
+
+  /* Prevent any long mono string (email, paths, etc.) from blowing layout */
+  .mono { word-break: break-word; overflow-wrap: anywhere; }
+
+  /* Ensure flex-row button groups wrap rather than overflow */
+  .card > div > .btn,
+  header .btn { flex-shrink: 0; }
+}
+
+/* Small phones: ≤ 390px */
+@media (max-width: 390px) {
+  .hero-grid { padding: 32px 16px 48px !important; }
+  section[id] { padding: 52px 16px 16px !important; }
+  .term-body  { font-size: 12px !important; }
 }
