@@ -171,7 +171,7 @@ Adding a new language requires only adding a new key block to the translations o
 |---|---|
 | **Email** | bgdenibg@gmail.com |
 | **GitHub** | [github.com/DenisTsranski](https://github.com/DenisTsranski) |
-| **Location** | Sofia, Bulgaria |
+| **Location** | Ruse, Bulgaria |
 | **Status** | Open to work |
 
 ---
