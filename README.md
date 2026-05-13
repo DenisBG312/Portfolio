@@ -86,7 +86,7 @@ Open to work · 2 shipped projects · ∞ coffee consumed · 0 outages
 
 ```bash
 # Clone
-git clone https://github.com/DenisTsranski/portfolio.git
+git clone https://github.com/DenisBG312/portfolio.git
 cd portfolio
 
 # Install dependencies
@@ -170,7 +170,7 @@ Adding a new language requires only adding a new key block to the translations o
 | | |
 |---|---|
 | **Email** | denis.tsranski@gmail.com |
-| **GitHub** | [github.com/DenisTsranski](https://github.com/DenisTsranski) |
+| **GitHub** | [github.com/DenisBG312](https://github.com/DenisBG312) |
 | **Location** | Ruse, Bulgaria |
 | **Status** | Open to work |
 
